@@ -6,15 +6,15 @@ import java.awt.Toolkit;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-public class PrivilegedCanvas extends JPanel{
+public class BlackCanvas extends JPanel{
 
-    int x;
-    int y;
-    int w;
-    int h;
-    int offset = 1;
+    private int x;
+    private int y;
+    private int w;
+    private int h;
+    private int offset = 1;
 
-    public PrivilegedCanvas(int x, int y, int width, int height){
+    public BlackCanvas(int x, int y, int width, int height){
 
         this.x = x;
         this.y = y;
@@ -31,7 +31,7 @@ public class PrivilegedCanvas extends JPanel{
 
         super.paintComponent(g);
 
-        g.setColor(Color.WHITE);
+        g.setColor(Color.BLACK);
         g.fillRect(x-offset, y-offset, w+offset, h+offset);
     }
 }

@@ -3,6 +3,8 @@ package company;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MainWindow extends JFrame implements ActionListener {
 
@@ -13,6 +15,7 @@ public class MainWindow extends JFrame implements ActionListener {
     private JTextField fieldPower;
 
     private boolean running;
+    private boolean shutDown;
     private int mainTime = 180;
     private int flickTime = 8000;
     private int power = 4;
@@ -20,6 +23,7 @@ public class MainWindow extends JFrame implements ActionListener {
     public MainWindow(){
 
         running = false;
+        shutDown = false;
 
         setTitle("Plasma saver");
 
@@ -56,6 +60,15 @@ public class MainWindow extends JFrame implements ActionListener {
 
         add(label);add(fieldTimeOfCanvas);add(fieldTimeOfWait);add(label2);add(label3);add(button);add(copyright);
         add(fieldPower);add(label4);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                running = false;
+                shutDown = true;
+            }
+        });
 
         setSize(300, 390);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,4 +125,6 @@ public class MainWindow extends JFrame implements ActionListener {
     public boolean getRunning(){return running;}
 
     public int getPower(){return power; }
+
+    public boolean getShutDown(){return shutDown;}
 }

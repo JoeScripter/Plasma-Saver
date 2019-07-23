@@ -20,11 +20,17 @@ public class Main {
 
         ArrayList<int[]> mainCoordinates = Pixels.getSamePixelsCoordinates(start);
 
-        while (true) {
+        while (!mainWindow.getRunning()) {
+            //wait until the button is activated
             Wait.waiting(500);
-
+            if(mainWindow.getShutDown()){
+                window.dispose();
+            }
             while (mainWindow.getRunning()) {
 
+                if(mainWindow.getShutDown()){
+                    window.dispose();
+                }
                 int power = mainWindow.getPower();
                 window.setFlickTime(mainWindow.getFlickTime());
                 window.setCoordinates(mainCoordinates);

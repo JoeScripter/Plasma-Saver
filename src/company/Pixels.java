@@ -5,8 +5,11 @@ import java.awt.image.DataBufferByte;
 import java.util.ArrayList;
 
 public class Pixels {
-
-    public static int[][] convertImage(BufferedImage image){
+    /*
+    convertImage code "borrowed" from stack overflow answer
+    https://stackoverflow.com/questions/6524196/java-get-pixel-array-from-image from user Motasim
+    */
+    private static int[][] convertImage(BufferedImage image){
 
         BufferedImage convertedImg = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
         convertedImg.getGraphics().drawImage(image, 0, 0, null);
@@ -57,6 +60,11 @@ public class Pixels {
 
         ArrayList<int[]> result = new ArrayList<>();
         ArrayList<int[][]> pixels = new ArrayList<>();
+
+        int[] neverEmpty = new int[2];
+        neverEmpty[1] = -10;
+        neverEmpty[0] = -10;
+        result.add(neverEmpty);
 
         for(int i = 0; i < images.length; i++){
             pixels.add(Pixels.convertImage(images[i]));
