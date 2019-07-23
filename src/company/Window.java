@@ -64,7 +64,7 @@ public class Window extends JWindow{
 
         for(int i = 0; i < numberOfCanvases; i++){
 
-            add((new BlackCanvas(minXs.get(i), minRows.get(i), maxXs.get(i)-minXs.get(i)+1, 4)));
+            add((new MyCanvas(minXs.get(i), minRows.get(i), maxXs.get(i)-minXs.get(i)+1, 4, Color.BLACK)));
             revalidate();
             repaint(minXs.get(i), minRows.get(i), maxXs.get(i)-minXs.get(i)+1, 4);
         }
@@ -77,7 +77,7 @@ public class Window extends JWindow{
 
         for(int i = 0; i < numberOfCanvases; i++){
 
-            add((new WhiteCanvas(minXs.get(i), minRows.get(i), maxXs.get(i)-minXs.get(i)+1, 4)));
+            add((new MyCanvas(minXs.get(i), minRows.get(i), maxXs.get(i)-minXs.get(i)+1, 4, Color.WHITE)));
             revalidate();
             repaint(minXs.get(i), minRows.get(i), maxXs.get(i)-minXs.get(i)+1, 4);
         }
